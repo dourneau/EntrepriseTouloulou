@@ -92,36 +92,39 @@ protected SessionFactory sessionFactory;
 	
 	protected Employe read(long id) {
 		
-		/*
-		Session session = sessionFactory.openSession();
-		id = 3;
-		Book book = session.get(Book.class, id);
-		
-		System.out.println("Title "+book.getTitle());
-		*/
 		
 		Session session = sessionFactory.openSession();
 		Employe employe = session.get(Employe.class, id);
+		
+		System.out.println("First name "+employe.getFirstName());
+		System.out.println("Last name "+employe.getLastName());
+		System.out.println("Age "+employe.getAge());
+		
 		
 		return employe;
 	}
 	
 	protected void update(long id,Employe newEmploye ) {
 		
-		/*
-		Book book = this.read(id);
-		if (newBook.getTitle() != null ) {
-			book.setTitle(newBook.getTitle());
-		}
-		if (newBook.getAuthor() != null) {
-			book.setAuthor(newBook.getAuthor());
-		}
-		if (newBook.getPrice() != book.getPrice()) {
-			book.setPrice(newBook.getPrice());
-		}
-		*/
-		
 		Employe employe = this.read(id);
+		if (newEmploye.getFirstName() != null ) {
+			employe.setFirstName(newEmploye.getFirstName());
+		}
+		if (newEmploye.getLastName() != null ) {
+			employe.setLastName(newEmploye.getLastName());
+		}
+		if (newEmploye.getCourriel() != null ) {
+			employe.setCourriel(newEmploye.getCourriel());
+		}
+		if (newEmploye.getAge() != 0 ) {
+			employe.setAge(newEmploye.getAge());
+		}
+		if (newEmploye.getPosition() != null ) {
+			employe.setPosition(newEmploye.getPosition());
+		}
+		if (newEmploye.getAdress() != null ) {
+			employe.setAdress(newEmploye.getAdress());
+		}
 		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -147,9 +150,19 @@ protected SessionFactory sessionFactory;
 	public static void main(String[] args) {
 		
 		EmployeManager manager = new EmployeManager();
+		
 		manager.setup();
-		manager.create();
-		//manager.read();
+	
+		//manager.create();
+		
+		//manager.read(2L);
+		
+		Employe employe = new Employe();
+		employe.setPosition("Fired");
+		manager.update(2L,employe);
+		
+		
+		
 		
 		
 		
