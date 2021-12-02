@@ -47,7 +47,7 @@ protected SessionFactory sessionFactory;
 		sessionFactory.close();
 	}
 	
-	protected Employe create( ) {
+	protected void create() {
 		//je crée un enregistrement
 		
 		/*
@@ -61,14 +61,39 @@ protected SessionFactory sessionFactory;
 		book2.setAuthor("Isaac Azimov");
 		book2.setPrice(9.99f);
 		*/
-		Employe employe = new Employe();
+		Employe employe1 = new Employe();
+		employe1.setFirstName("James");
+		employe1.setLastName("West");
+		employe1.setCourriel("james.west@touloulou.com");
+		employe1.setAge(57);
+		employe1.setPosition("espion");
+		employe1.setPhone("0101010101");
+		employe1.setAdress("1 Avenue des Champs Elysées 75000 PARIS");
+		
+		
+		
+		Employe employe2 = new Employe();
+		employe2.setFirstName("Arthimus");
+		employe2.setLastName("Gordon");
+		employe2.setCourriel("arthimus.gordon@touloulou.com");
+		employe2.setAge(54);
+		employe2.setPosition("espion");
+		employe2.setPhone("0202020202");
+		employe2.setAdress("2 Rue de la Paix 75000 PARIS");
 		
 		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		session.save(employe);
+		session.save(employe1);
 		session.getTransaction().commit();
 		session.close();
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(employe2);
+		session.getTransaction().commit();
+		session.close();
+		
 	}
 	
 	protected Employe read(long id) {
