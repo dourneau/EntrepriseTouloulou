@@ -99,7 +99,9 @@ protected SessionFactory sessionFactory;
 		System.out.println("First name "+employe.getFirstName());
 		System.out.println("Last name "+employe.getLastName());
 		System.out.println("Age "+employe.getAge());
-		
+		System.out.println("Courriel "+employe.getCourriel());
+		System.out.println("Position "+employe.getPosition());
+		System.out.println("Adresse "+employe.getAdress());
 		
 		return employe;
 	}
@@ -138,13 +140,11 @@ protected SessionFactory sessionFactory;
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.delete(employe);
-		
 		session.getTransaction().commit();
 		session.close();
-		
-		
-		
 	}
+	
+	
 	
 	
 	public static void main(String[] args) {
@@ -153,13 +153,22 @@ protected SessionFactory sessionFactory;
 		
 		manager.setup();
 	
+		//Test de la méthode create
 		//manager.create();
 		
+		// Test de la méthode read
 		//manager.read(2L);
 		
+		// Test de la méthode update
+		/*
 		Employe employe = new Employe();
 		employe.setPosition("Fired");
 		manager.update(2L,employe);
+		*/
+		
+		// Test de la méthode delete
+		//manager.delete(manager.read(2L));
+		
 		
 		
 		
