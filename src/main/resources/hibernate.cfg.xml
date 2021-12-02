@@ -14,7 +14,7 @@
         </property>
         <!-- URL de connexion à notre BDD -->
         <property name="connection.url">
-             jdbc:mysql://localhost:3306/listeEmployes
+             jdbc:mysql://localhost:3306/listeemployes
         </property>
         <!-- identifiant de connexion -->
         <property name="connection.username">

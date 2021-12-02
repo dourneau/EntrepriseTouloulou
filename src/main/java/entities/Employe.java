@@ -1,6 +1,10 @@
 package entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 //on joint la base de données à l'entité
@@ -21,6 +25,15 @@ public class Employe {
 	public Employe() {
 	}
 
+	// Colum(name="id"): id est le nom de la colonne dans la base de données
+	// GenenratedValue est le manière de générer la clé primare:
+	// AUTO : hibernate gère les valeurs des id
+	// IDENTITY: mysql gère par auto_increment 
+	// TABLE: hibernate gère
+	// SEQUENCE: mysql gère 
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}

@@ -17,6 +17,7 @@ protected SessionFactory sessionFactory;
 		// On récupère la conf d'hibernate pour créer une registry
 		//ATTENTION: ICI ON NE SE CONNECTE PAS
 		//DONC ON NE LANCE PAS DE SESSION AVEC LA BDD
+		
 		final StandardServiceRegistry registry = 
 				new StandardServiceRegistryBuilder().configure().build();
 		
@@ -27,7 +28,7 @@ protected SessionFactory sessionFactory;
 					.buildMetadata().buildSessionFactory();
 			
 			/*
-			// Si tout a fonctionné
+			//Si tout a fonctionné
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			session.getTransaction();
@@ -50,20 +51,9 @@ protected SessionFactory sessionFactory;
 	protected void create() {
 		//je crée un enregistrement
 		
-		/*
-		Book book = new Book();
-		book.setTitle("October");
-		book.setAuthor("Soren Sveistrup");
-		book.setPrice(34.50f);
-		
-		Book book2 = new Book();
-		book2.setTitle("Fundation");
-		book2.setAuthor("Isaac Azimov");
-		book2.setPrice(9.99f);
-		*/
 		Employe employe1 = new Employe();
-		employe1.setFirstName("James");
 		employe1.setLastName("West");
+		employe1.setFirstName("James");
 		employe1.setCourriel("james.west@touloulou.com");
 		employe1.setAge(57);
 		employe1.setPosition("espion");
@@ -80,19 +70,23 @@ protected SessionFactory sessionFactory;
 		employe2.setPosition("espion");
 		employe2.setPhone("0202020202");
 		employe2.setAdress("2 Rue de la Paix 75000 PARIS");
+
+		
+		/*
+		Session session1 = sessionFactory.openSession();
+		session1.beginTransaction();
+		session1.save(employe1);
+		session1.getTransaction().commit();
+		session1.close();
+		*/
 		
 		
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save(employe1);
-		session.getTransaction().commit();
-		session.close();
+		Session session2 = sessionFactory.openSession();
+		session2.beginTransaction();
+		session2.save(employe2);
+		session2.getTransaction().commit();
+		session2.close();
 		
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save(employe2);
-		session.getTransaction().commit();
-		session.close();
 		
 	}
 	
@@ -152,25 +146,12 @@ protected SessionFactory sessionFactory;
 	
 	public static void main(String[] args) {
 		
-		/**
-		BookManager manager = new BookManager();
+		EmployeManager manager = new EmployeManager();
 		manager.setup();
-		//manager.create();
+		manager.create();
 		//manager.read();
 		
-		/*
-		Book book = new Book();
-		book.setPrice(54f);
-		long id = 3;
-		manager.update(id,book);
-		*/
 		
-		/*
-		Book book = new Book();
-		long id = 3;
-		manager.delete(book);		
-		manager.exit();
-		*/
 		
 		
 	}
